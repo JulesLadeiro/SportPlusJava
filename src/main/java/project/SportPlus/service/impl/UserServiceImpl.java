@@ -16,26 +16,36 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUser() {
-        return userRepository.findAll();
+        List<User> allUsers = userRepository.findAll();
+        for (User user : allUsers) {
+            user.setPassword(null);
+            user.setEmail(null);
+        }
+        return allUsers;
     }
 
     @Override
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElse(null);
+        if (user != null) {
+            user.setPassword(null);
+            user.setEmail(null);
+        }
+        return user;
     }
 
     @Override
-    public void createUser(User demo) {
-        userRepository.save(demo);
+    public void createUser(User user) {
+        userRepository.save(user);
     }
 
     @Override
-    public void updateUser(User demo, Long id) {
-        User maDemo = this.getUserById(id);
-        maDemo.setUsername(demo.getUsername());
-        maDemo.setPassword(demo.getPassword());
-        maDemo.setRole(demo.getRole());
-        userRepository.save(maDemo);
+    public void updateUser(User user, Long id) {
+        User updatedUser = this.getUserById(id);
+        updatedUser.setUsername(user.getUsername());
+        updatedUser.setPassword(user.getPassword());
+        updatedUser.setRole(user.getRole());
+        userRepository.save(updatedUser);
     }
 
     @Override
