@@ -16,12 +16,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUser() {
-        return userRepository.findAll();
+        List<User> allUsers = userRepository.findAll();
+        for (User user : allUsers) {
+            user.setPassword(null);
+            user.setEmail(null);
+        }
+        return allUsers;
     }
 
     @Override
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElse(null);
+        if (user != null) {
+            user.setPassword(null);
+            user.setEmail(null);
+        }
+        return user;
     }
 
     @Override
