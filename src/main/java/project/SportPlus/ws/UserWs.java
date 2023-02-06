@@ -32,6 +32,7 @@ public class UserWs {
 
     @PostMapping
     public void createUser(@RequestBody User user){
+        System.out.println(user);
         userService.createUser(user);
     }
 
