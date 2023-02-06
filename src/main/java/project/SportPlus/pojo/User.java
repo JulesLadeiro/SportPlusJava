@@ -2,6 +2,8 @@ package project.SportPlus.pojo;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 
@@ -13,9 +15,11 @@ public class User {
     private String username;
 
     @Column(name = "email")
+    @JsonIgnore()
     private String email;
 
     @Column(name = "password")
+    @JsonIgnore()
     private String password;
 
     @Column(name = "role")
