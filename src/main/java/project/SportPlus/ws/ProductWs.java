@@ -11,40 +11,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
-import project.SportPlus.pojo.User;
-import project.SportPlus.service.UserService;
+import project.SportPlus.pojo.Catalogue;
+import project.SportPlus.service.CatalogueService;
 
 @RestController
-@RequestMapping(value = "/user")
-public class UserWs {
+@RequestMapping(value = "/product")
+public class ProductWs {
     @Autowired
-    private UserService userService;
+    private CatalogueService catalogueService;
 
     @GetMapping
-    public List<User> getAllUser() {
-        return userService.getAllUser();
+    public List<Catalogue> getAllCatalogue() {
+        return catalogueService.getAllCatalogue();
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable("id") Long id){
-        return userService.getUserById(id);
+    public Catalogue getCatalogueById(@PathVariable("id") Long id){
+        return catalogueService.getCatalogueById(id);
     }
 
     @PostMapping
-    public void createUser(@RequestBody User user){
-        System.out.println(user);
-        userService.createUser(user);
+    public void createCatalogue(@RequestBody Catalogue catalogue){
+        catalogueService.createCatalogue(catalogue);
     }
 
     @PutMapping("/{id}")
-    public void updateUser(@RequestBody User user,
+    public void updateCatalogue(@RequestBody Catalogue catalogue,
                            @PathVariable("id") Long id){
-        userService.updateUser(user,id);
+        catalogueService.updateCatalogue(catalogue,id);
 
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") Long id){
-        userService.deleteUser(id);
+    public void deleteCatalogue(@PathVariable("id") Long id){
+        catalogueService.deleteCatalogue(id);
     }
 }

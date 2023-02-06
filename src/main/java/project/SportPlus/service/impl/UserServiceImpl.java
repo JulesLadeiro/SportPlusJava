@@ -5,6 +5,7 @@ import project.SportPlus.repository.UserRepository;
 import project.SportPlus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 
@@ -17,10 +18,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUser() {
         List<User> allUsers = userRepository.findAll();
-        for (User user : allUsers) {
-            user.setPassword(null);
-            user.setEmail(null);
-        }
         return allUsers;
     }
 
@@ -36,6 +33,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUser(User user) {
+        String newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
+        user.setPassword(newPassword);
         userRepository.save(user);
     }
 
@@ -43,7 +42,8 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user, Long id) {
         User updatedUser = this.getUserById(id);
         updatedUser.setUsername(user.getUsername());
-        updatedUser.setPassword(user.getPassword());
+        String newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
+        updatedUser.setPassword(newPassword);
         updatedUser.setRole(user.getRole());
         userRepository.save(updatedUser);
     }
