@@ -13,12 +13,12 @@ public class Catalogue {
     private String name;
 
     @Column(name = "userid")
-    private String userid;
+    private Long userid;
 
     public Catalogue() {
     }
 
-    public Catalogue(String name, String userid) {
+    public Catalogue(String name, Long userid) {
         this.name = name;
         this.userid = userid;
     }
@@ -35,11 +35,11 @@ public class Catalogue {
         return this.name = name;
     }
 
-    public String getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public String setUserid(String userid) {
+    public Long setUserid(Long userid) {
         return this.userid = userid;
     }
 }
