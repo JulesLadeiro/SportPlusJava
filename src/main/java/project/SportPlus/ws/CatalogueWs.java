@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import project.SportPlus.pojo.Catalogue;
+import project.SportPlus.repository.CatalogueRepository;
 import project.SportPlus.service.CatalogueService;
 
 @RestController
@@ -19,6 +20,8 @@ import project.SportPlus.service.CatalogueService;
 public class CatalogueWs {
     @Autowired
     private CatalogueService catalogueService;
+    @Autowired
+    private CatalogueRepository catalogueRepository;
 
     @GetMapping
     public List<Catalogue> getAllCatalogue() {
