@@ -9,5 +9,5 @@ spring:
     driver-class: com.mysql.jdbc.Driver
   spring:
     thymeleaf:
-      prefix: classpath:/templates/
+       prefix: classpath:/templates
 
