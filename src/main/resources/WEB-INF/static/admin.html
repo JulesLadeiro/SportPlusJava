@@ -63,7 +63,7 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
+                <div th:if="${#httpServletRequest.getRequestURI().startsWith('/admin/product')}"
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
@@ -75,7 +75,11 @@
                     </div>
                 </div>
                 <div class="content">
-                    text-uppercase
+                    <div th:if="${#httpServletRequest.getRequestURI().startsWith('/admin')}">
+                            Bienvenue sur la page admin
+                    </div>
+                    <div th:if="${#httpServletRequest.getRequestURI().startsWith('/admin/product')}" th:replace="addprod :: addprod" >
+                    </div>
                 </div>
             </main>
         </div>
