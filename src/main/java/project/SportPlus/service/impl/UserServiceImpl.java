@@ -1,5 +1,6 @@
 package project.SportPlus.service.impl;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import project.SportPlus.pojo.User;
 import project.SportPlus.repository.UserRepository;
 import project.SportPlus.service.UserService;
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUser(User user) {
+        System.out.println(user.getUsername());
         String newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user.setPassword(newPassword);
         userRepository.save(user);
