@@ -12,38 +12,39 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import project.SportPlus.pojo.Catalogue;
-import project.SportPlus.service.CatalogueService;
+import project.SportPlus.pojo.Product;
+import project.SportPlus.service.ProductService;
 
 @RestController
 @RequestMapping(value = "/product")
 public class ProductWs {
     @Autowired
-    private CatalogueService catalogueService;
+    private ProductService productService;
 
     @GetMapping
-    public List<Catalogue> getAllCatalogue() {
-        return catalogueService.getAllCatalogue();
+    public List<Product> getAllProduct() {
+        return productService.getAllProduct();
     }
 
     @GetMapping("/{id}")
-    public Catalogue getCatalogueById(@PathVariable("id") Long id){
-        return catalogueService.getCatalogueById(id);
+    public Product getProductById(@PathVariable("id") Long id){
+        return productService.getProductById(id);
     }
 
     @PostMapping
-    public void createCatalogue(@RequestBody Catalogue catalogue){
-        catalogueService.createCatalogue(catalogue);
+    public void createProduct(@RequestBody Product product){
+            productService.createProduct(product);
     }
 
     @PutMapping("/{id}")
-    public void updateCatalogue(@RequestBody Catalogue catalogue,
+    public void updateProduct(@RequestBody Product product,
                            @PathVariable("id") Long id){
-        catalogueService.updateCatalogue(catalogue,id);
+        productService.updateProduct(product,id);
 
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCatalogue(@PathVariable("id") Long id){
-        catalogueService.deleteCatalogue(id);
+    public void deleteProduct(@PathVariable("id") Long id){
+        productService.deleteProduct(id);
     }
 }
