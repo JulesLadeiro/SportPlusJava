@@ -17,4 +17,10 @@ public class RoutingController {
         model.addAttribute("message", "Hello from example 2");
         return "index";
     }
+
+    @GetMapping("/inscription")
+    public String inscription(Model model) {
+        model.addAttribute("message", "Hello from example 2");
+        return "index";
+    }
 }
