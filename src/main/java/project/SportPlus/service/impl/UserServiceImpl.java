@@ -1,11 +1,8 @@
 package project.SportPlus.service.impl;
 
-<<<<<<< Updated upstream
 import org.springframework.web.bind.annotation.CrossOrigin;
-=======
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
->>>>>>> Stashed changes
 import project.SportPlus.pojo.User;
 import project.SportPlus.repository.UserRepository;
 import project.SportPlus.service.UserService;
@@ -40,12 +37,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUser(User user) {
-<<<<<<< Updated upstream
-        System.out.println(user.getUsername());
         String newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user.setPassword(newPassword);
         userRepository.save(user);
-=======
+
         List<User> users = getAllUser();
 
         for (User item : users) {
@@ -53,10 +48,6 @@ public class UserServiceImpl implements UserService {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN, "L'adresse email existe déjà");
             }
         }
-            String newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
-            user.setPassword(newPassword);
-            userRepository.save(user);
->>>>>>> Stashed changes
     }
 
     @Override
