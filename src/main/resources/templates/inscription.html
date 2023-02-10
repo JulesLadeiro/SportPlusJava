@@ -1,4 +1,4 @@
-<div class="row g-5">
+<div th:fragment="inscription" class="row g-5">
   <div class="col-md-7 col-lg-8">
     <h4 class="mb-3">Création de compte</h4>
     <form class="needs-validation" novalidate>
@@ -25,10 +25,10 @@
         </div>
         <div class="col-12">
           <input
-            type="text"
+            type="password"
             class="form-control"
-            id="address"
-            placeholder="1234 Main St"
+            id="password"
+            placeholder="password"
             required
           />
         </div>
