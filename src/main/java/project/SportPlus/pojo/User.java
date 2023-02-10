@@ -15,11 +15,9 @@ public class User {
     private String username;
 
     @Column(name = "email")
-    @JsonIgnore()
     private String email;
 
     @Column(name = "password")
-    @JsonIgnore()
     private String password;
 
     @Column(name = "role")
