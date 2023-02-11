@@ -1,0 +1,14 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    username: "sportplus"
+    password: "Azertyuiop59"
+    url: "jdbc:mysql://mysql-sportplus.alwaysdata.net:3306/sportplus_sport_plus"
+    driver-class: com.mysql.jdbc.Driver
+  thymeleaf:
+    prefix: classpath:/templates
+server:
+  error:
+    include-message: always
