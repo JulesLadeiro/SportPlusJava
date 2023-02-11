@@ -28,10 +28,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         User user = userRepository.findById(id).orElse(null);
-        if (user != null) {
-            user.setPassword(null);
-            user.setEmail(null);
-        }
         return user;
     }
 

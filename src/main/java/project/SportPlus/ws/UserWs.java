@@ -15,16 +15,6 @@ public class UserWs {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<User> getAllUser() {
-        return userService.getAllUser();
-    }
-
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable("id") Long id){
-        return userService.getUserById(id);
-    }
-
     @PostMapping
     public void createUser(@RequestBody User user){
         userService.createUser(user);
