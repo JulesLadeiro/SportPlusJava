@@ -16,19 +16,13 @@ public class UserWs {
     private UserService userService;
 
     @PostMapping
-    public void createUser(@RequestBody User user){
+    public void createUser(@RequestBody User user) {
         userService.createUser(user);
     }
 
     @PutMapping("/{id}")
     public void updateUser(@RequestBody User user,
-                           @PathVariable("id") Long id){
-        userService.updateUser(user,id);
-
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") Long id){
-        userService.deleteUser(id);
+            @PathVariable("id") Long id) {
+        userService.updateUser(user, id);
     }
 }
