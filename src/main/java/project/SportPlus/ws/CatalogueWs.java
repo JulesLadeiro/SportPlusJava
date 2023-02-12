@@ -24,21 +24,4 @@ public class CatalogueWs {
     public Catalogue getCatalogueById(@PathVariable("id") Long id){
         return catalogueService.getCatalogueById(id);
     }
-
-    @PostMapping
-    public void createCatalogue(@RequestBody Catalogue catalogue){
-        catalogueService.createCatalogue(catalogue);
-    }
-
-    @PutMapping("/{id}")
-    public void updateCatalogue(@RequestBody Catalogue catalogue,
-                           @PathVariable("id") Long id){
-        catalogueService.updateCatalogue(catalogue,id);
-
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteCatalogue(@PathVariable("id") Long id){
-        catalogueService.deleteCatalogue(id);
-    }
 }
