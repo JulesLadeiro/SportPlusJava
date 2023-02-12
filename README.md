@@ -23,7 +23,7 @@ L'endpoint de récupération d'utilisateurs ne sont pas accéssibles via l'API.
 | Méthode | Endpoint | Description                                                                                     |
 | ------- | -------- | ----------------------------------------------------------------------------------------------- |
 | POST    | /users   | Crée un utilisateur, reçoit un objet JSON avec le username, l'email, mot de passe et role       |
-| UPDATE  | /users   | Met à jour un utilisateur, reçoit un objet JSON avec le username, l'email, mot de passe et role |
+| PUT  | /users   | Met à jour un utilisateur, reçoit un objet JSON avec le username, l'email, mot de passe et role |
 
 ### Catalogues
 
@@ -41,5 +41,5 @@ L'endpoint de création et édition et suppression de catalogue n'est pas dispon
 | GET     | /product      | Récupère tous les produits                                                                            |
 | GET     | /product/{id} | Récupère un produit par son id                                                                        |
 | POST    | /product      | Crée un produit, reçoit un objet JSON avec le nom, le prix, l'image en base64 et le catalogueId       |
-| UPDATE  | /product      | Met à jour un produit, reçoit un objet JSON avec le nom, le prix, l'image en base64 et le catalogueId |
+| PUT  | /product      | Met à jour un produit, reçoit un objet JSON avec le nom, le prix, l'image en base64 et le catalogueId |
 | DELETE  | /product/{id} | Supprime un produit par son id                                                                        |
