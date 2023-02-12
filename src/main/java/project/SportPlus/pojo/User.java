@@ -8,18 +8,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username")
     private String username;
 
     @Column(name = "email")
-    @JsonIgnore()
     private String email;
 
     @Column(name = "password")
-    @JsonIgnore()
     private String password;
 
     @Column(name = "role")

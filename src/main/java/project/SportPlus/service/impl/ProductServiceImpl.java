@@ -1,7 +1,11 @@
 package project.SportPlus.service.impl;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+import project.SportPlus.pojo.Catalogue;
 import project.SportPlus.pojo.Product;
 import project.SportPlus.repository.ProductRepository;
+import project.SportPlus.service.CatalogueService;
 import project.SportPlus.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private CatalogueService catalogueService;
 
     @Override
     public List<Product> getAllProduct() {
@@ -26,7 +33,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void createProduct(Product produit) {
-        productRepository.save(produit);
+        Catalogue catalogueId = null;
+        if(produit.getCatalogueid() != null){
+            catalogueId = catalogueService.getCatalogueById(produit.getCatalogueid());
+        }
+        if(catalogueId != null){
+            productRepository.save(produit);
+        }else{
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Le catalogue n\'existe pas");
+        }
     }
 
     @Override
