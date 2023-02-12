@@ -3,7 +3,9 @@ package project.SportPlus.service.impl;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+import project.SportPlus.pojo.Catalogue;
 import project.SportPlus.pojo.User;
+import project.SportPlus.repository.CatalogueRepository;
 import project.SportPlus.repository.UserRepository;
 import project.SportPlus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CatalogueRepository catalogueRepository;
 
     @Override
     public List<User> getAllUser() {
@@ -35,7 +40,6 @@ public class UserServiceImpl implements UserService {
     public void createUser(User user) {
         String newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user.setPassword(newPassword);
-        userRepository.save(user);
 
         List<User> users = getAllUser();
 
@@ -44,6 +48,12 @@ public class UserServiceImpl implements UserService {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN, "L'adresse email existe déjà");
             }
         }
+
+        if (user.getRole().equals("CLIENT")) {
+            catalogueRepository.save(new Catalogue(user.getUsername(), user.getId()));
+        }
+
+        userRepository.save(user);
     }
 
     @Override
