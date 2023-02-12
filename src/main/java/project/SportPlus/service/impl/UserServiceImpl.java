@@ -48,12 +48,10 @@ public class UserServiceImpl implements UserService {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN, "L'adresse email existe déjà");
             }
         }
-
+        User newUser = userRepository.save(user);
         if (user.getRole().equals("CLIENT")) {
-            catalogueRepository.save(new Catalogue(user.getUsername(), user.getId()));
+            catalogueRepository.save(new Catalogue(user.getUsername(), newUser.getId()));
         }
-
-        userRepository.save(user);
     }
 
     @Override
